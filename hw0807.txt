@@ -30,7 +30,8 @@ CREATE TABLE `customers` (
   `cID` int(11) NOT NULL DEFAULT 0,
   `cName` varchar(20) NOT NULL DEFAULT '',
   `Address` varchar(50) DEFAULT NULL,
-  `Phone` varchar(24) DEFAULT NULL
+  `Phone` varchar(24) DEFAULT NULL,
+  PRIMARY KEY (`cID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,7 +81,8 @@ CREATE TABLE `menus` (
   `mID` int(11) NOT NULL DEFAULT 0,
   `mName` varchar(40) NOT NULL DEFAULT '',
   `rID` int(11) NOT NULL DEFAULT 0,
-  `UnitPrice` smallint(6) NOT NULL DEFAULT 0
+  `UnitPrice` smallint(6) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`mID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,10 +105,11 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `oID` int(30) NOT NULL DEFAULT 0,
-  `cID` int(11) DEFAULT NULL,
+  `cID` int(11) NOT NULL,
   `sID` int(11) DEFAULT NULL,
-  `OrderDate` datetime DEFAULT NULL,
-  `ShipDate` datetime DEFAULT NULL
+  `OrderDate` timestamp NULL DEFAULT NULL,
+  `ShipDate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`oID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -116,7 +119,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (10201,5,2,'2006-03-28 16:30:20','2006-03-29 11:30:10'),(10202,3,3,'2007-04-08 16:30:30','2007-04-10 16:42:30'),(10203,2,1,'2008-05-28 16:40:10','2008-05-30 17:30:20'),(10204,1,1,'2009-02-10 09:30:00','2009-02-12 17:38:25'),(10205,4,3,'2010-02-28 16:30:00','2010-02-28 16:30:00');
+INSERT INTO `orders` VALUES (10201,5,2,'2006-03-28 08:30:20','2006-03-29 03:30:10'),(10202,3,3,'2007-04-08 08:30:30','2007-04-10 08:42:30'),(10203,2,1,'2008-05-28 08:40:10','2008-05-30 09:30:20'),(10204,1,1,'2009-02-10 01:30:00','2009-02-12 09:38:25'),(10205,4,3,'2010-02-28 08:30:00','2010-02-28 08:30:00');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +134,8 @@ CREATE TABLE `restaurants` (
   `rID` int(11) NOT NULL DEFAULT 0,
   `rName` varchar(40) NOT NULL DEFAULT '',
   `Address` varchar(50) NOT NULL DEFAULT '',
-  `Phone` varchar(24) NOT NULL DEFAULT ''
+  `Phone` varchar(24) NOT NULL DEFAULT '',
+  PRIMARY KEY (`rID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,7 +159,8 @@ DROP TABLE IF EXISTS `shippers`;
 CREATE TABLE `shippers` (
   `sID` int(11) NOT NULL DEFAULT 0,
   `sName` varchar(20) NOT NULL DEFAULT '',
-  `sPhone` varchar(24) DEFAULT NULL
+  `sPhone` varchar(24) DEFAULT NULL,
+  PRIMARY KEY (`sID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -178,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-08 19:17:07
+-- Dump completed on 2020-08-09  2:47:50
